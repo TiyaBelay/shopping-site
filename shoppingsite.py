@@ -73,14 +73,56 @@ def shopping_cart():
     # - hand to the template the total order cost and the list of melon types
 
 
-    session['cart'] #This will give me the list of id's in my session dictionary    
+    #Already have the melon information from our get_by_id function in melons.py 
+    #and would only need to get from it the melon name and price info. 
+    #This way we can just count quantity and get the total 
+    #.get_by_id function is only taking 1 id and my cart_ids is a list of ids
+
+    # melons = melons.get_by_id(cart_ids)
+    # # print melons
+
+    # cart_ids = session['cart'] #bind values to the variable cart_ids   
+
+    melon_dict = melons.get_all()
+
+    for obj in melon_dict:
+        print obj #(checkpoint) This will print every opject within the melon_dict
 
 
-    for id in session:
+    melon_objects = {} #create an empty dictionary
+
+    id = {price: melons.melon_types.price, 
+        melon_name: melons.common_name, 
+        quantity: int,
+        total: int}
+
+    for key, value in melon_objects.items():
+        for key, value in id.items():
+            if value not in id:
 
 
 
 
+    # for id in cart_ids:
+    #     if id not in cart_id_dict:
+    #         cart_id_dict['id'] = {"quantity":1,
+    #     else:
+    #         cart_id_dict['id'].append(quantity)
+
+    # if 'price' not in cart_id_dict:
+    # cart_id_dict['cart_ids']['price'] = []
+    # else:
+    # cart_id_dict['cart_ids']['price'].append()
+    # # elif 'melon name' not in cart_id_dict:
+    #     cart_id_dict['cart_ids']['melon name'] = [name]
+    # else:
+    #     cart_id_dict['cart_ids']['melon name'].append[name]
+    # elif 'quantity' not in cart_id_dict:
+    #     cart_id_dict['cart_ids']['quantity'] = [amount]
+    # else:
+    #     cart_id_dict['cart  ds']['total'] = [value]
+    # else:
+    #     cart_id_dict['cart_ids']['total'].append[value]
 
 
 
@@ -102,7 +144,7 @@ def add_to_cart(id):
         session['cart'].append(id)
 
         flash("Successfully added your melon to the cart.")
-        return redirect("/cart")
+    return redirect("/cart")
 
     # TODO: Finish shopping cart functionality
 
